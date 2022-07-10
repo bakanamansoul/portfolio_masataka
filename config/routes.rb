@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get "about" => "homes#about", as: 'about'
     resources :customers, only: [:show, :edit, :update, :destroy]
-    resources :stores, only: [:imdex, :show]
+    resources :stores, only: [:index, :show]
     resources :genres, only: [:index]
     resources :reviews, only: [:new, :create, :index, :show, :edit, :update]
   end

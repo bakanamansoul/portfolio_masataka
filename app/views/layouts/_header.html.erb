@@ -1,0 +1,36 @@
+<headar>
+  <nav class="navbar navbar-expand-lg navbar-right pb-4 border-bottom border-dark">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse show" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <li><%= link_to "概要", about_path,class: 'btn btn-sm btn-outline-secondary bg-success text-white' %></li>
+          <li><%= link_to "店舗一覧", stores_path,class: 'btn btn-sm btn-outline-secondary bg-success text-white' %></li>
+          <li><%= link_to "マイページ", customer_path(current_customer),class: 'btn btn-sm btn-outline-secondary bg-success text-white ' %></li>
+          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-sm btn-outline-secondary bg-success text-white' %></li>
+
+        <% elsif admin_signed_in? %>
+          <li><%= link_to "ジャンル追加", admin_genres_path, class: 'btn btn-sm btn-outline-secondary bg-success text-white' %></li>
+          <li><%= link_to "店舗一覧", admin_root_path, class: 'btn btn-sm btn-outline-secondary bg-success text-white' %></li>
+          <li><%= link_to "ユーザー一覧", admin_customers_path, class: 'btn btn-sm btn-outline-secondary bg-success text-white' %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-sm btn-outline-secondary bg-success text-white' %></li>
+
+        <% else %>
+          <li><%= link_to "概要", about_path,class: 'btn btn-sm btn-outline-secondary bg-success text-white ' %></li>
+          <li><%= link_to "店舗一覧", stores_path,class: 'btn btn-sm btn-outline-secondary bg-success text-white' %></li>
+          <li><%= link_to "新規登録", new_customer_registration_path,class: 'btn btn-sm btn-outline-secondary bg-success text-white' %></li>
+          <li><%= link_to "ログイン", new_customer_session_path ,class: 'btn btn-sm btn-outline-secondary bg-success text-white' %></li>
+        <% end %>
+        </ul>
+      </div>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+</headar>

@@ -1,0 +1,31 @@
+<h2>店舗情報編集</h2>
+<%= form_with model: @store, url: admin_store_path(@store.id), method: :patch do |f| %>
+  <p>郵便番号</p>
+  <%= f.text_field :postcode %>
+
+  <p>住所</p>
+  <%= f.text_field :address %>
+  
+  <p>店舗画像</p>
+  <%= f.file_field :image, accept: "image/*" %>
+
+  <p>店舗名</p>
+  <%= f.text_field :name %>
+  
+  <p>ジャンル</p>
+  <%= f.collection_select :genre_name, Genre.all, :name, :name %>
+
+  <p>メニュー</p>
+  <%= f.text_area :menu %>
+
+  <p>営業時間</p>
+  <%= f.text_field :business_hours %>
+
+  <p>定休日</p>
+  <%= f.text_field :fixed_holiday %>
+
+  <p>アクセス</p>
+  <%= f.text_field :access %>
+
+  <%= f.submit "更新" %>
+<% end %>

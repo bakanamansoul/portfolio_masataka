@@ -1,0 +1,21 @@
+<h2>店舗一覧</h2>
+  <p><%= link_to "店舗追加", new_admin_store_path %></p>
+<table>
+  <tbody>
+    <% @stores.each do |store| %>
+    <tr>
+      <th>
+        <% if store.image.attached? %>
+          <%= image_tag store.image, size: "200x200" %>
+        <% else %>
+          <%= image_tag "no_image", size: "200x200" %>
+        <% end %>
+      </th>
+      <th><% store.name %></th>
+      <td><% store.genre_name %></td>
+      <td><% store.postcode %></td>
+      <td><% store.address %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
