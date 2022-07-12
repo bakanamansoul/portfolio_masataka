@@ -24,5 +24,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :reviews, only: [:show, :destroy]
   end
+
+  root to: "public/homes#top"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
