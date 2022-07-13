@@ -1,0 +1,13 @@
+<h3>レビュー編集</h3>
+
+<%= form_with model: @review, url: reviews_path do |f| %>
+  <p>タイトル</p>
+  <%= f.text_filed :title %>
+  
+  <p>レビュー内容</p>
+  <%= f.text_area :body %>
+  
+  <p>レビュー画像</p>
+  <%= f.file_filed :image, accept: "image/*" %>
+  <%= f.submit "更新" %>
+<% end %>

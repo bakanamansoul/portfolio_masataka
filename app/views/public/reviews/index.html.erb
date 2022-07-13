@@ -1,0 +1,10 @@
+<h3>レビュー一覧</h3>
+<p><%= link_to "新規投稿はこちら", new_review_path %></p>
+<table>
+  <% @reviews.each do |review| %>
+  <tr>
+    <td><%= review.title %></td>
+    <td><%= image_tag review.get_image, size: "100x100" %></td>
+  </tr>
+  <% end %>
+</table>

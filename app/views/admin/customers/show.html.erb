@@ -11,3 +11,13 @@
     <td><%= @customer.name %></td>
   </tr>
 </table>
+
+<h3>レビュー一覧</h3>
+<table>
+  <% @reviews.each do |review| %>
+  <tr>
+    <td><%= review.title %></td>
+    <td><%= image_tag review.get_image, size: "100x100" %></td>
+  </tr>
+  <% end %>
+</table>
