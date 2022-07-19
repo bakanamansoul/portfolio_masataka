@@ -11,11 +11,14 @@ class Admin::GenresController < ApplicationController
     redirect_to '/admin/genres'
   end
 
-  def destroy
-
+  def show
+    @genre = Genre.find(params[:id])
   end
 
-  def update
+  def destroy
+    @genre = Genre.find(params[:id])
+    @genre.destroy
+    redirect_to '/admin/genres'
   end
 
   private

@@ -3,17 +3,16 @@
   <tbody>
     <% @stores.each do |store| %>
     <tr>
-      <th>
+      <th><%= link_to store.name, store_path(store.id) %><br>
         <% if store.image.attached? %>
-          <%= image_tag store.image, size: "200x200" %>
+          <%= image_tag store.image, size: "100x100" %>
         <% else %>
-          <%= image_tag "no_image", size: "200x200" %>
+          <%= image_tag "no_image", size: "100x100" %>
         <% end %>
       </th>
-      <th><% store.name %></th>
-      <td><% store.genre_name %></td>
-      <td><% store.postcode %></td>
-      <td><% store.address %></td>
+      <td><%= store.genre_name %></td>
+      <td><%= store.postcode %></td>
+      <td><%= store.address %></td>
     </tr>
     <% end %>
   </tbody>

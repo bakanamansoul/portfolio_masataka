@@ -1,3 +1,4 @@
+<h3>店舗詳細</h3>
 <table>
   <tr>
     <th><% @store.name %></th>
@@ -11,26 +12,26 @@
   </tr>
   <tr>
     <th>ジャンル</th>
-    <td><% @store.genre_name %></td>
+    <td><%= @store.genre_name %></td>
   </tr>
   <tr>
-    <th>メニュー</th> 
-    <td><% @store.menu %></td>
+    <th>メニュー</th>
+    <td><%= @store.menu %></td>
   </tr>
   <tr>
     <th>営業時間</th>
-    <td><% @store.business_hours %></td>
+    <td><%= @store.business_hours %></td>
   </tr>
   <tr>
     <th>定休日</th>
-    <td><% @store.fixed_holiday %></td>
+    <td><%= @store.fixed_holiday %></td>
   </tr>
   <tr>
     <th>住所</th>
-    <td><% @store.postcode %><% @store.address %></td>
+    <td><%= @store.postcode %><% @store.address %></td>
   </tr>
   <tr>
     <th>アクセス</th>
-    <td><% @store.accsess%></td>
+    <td><%= @store.access%></td>
   </tr>
 </table>

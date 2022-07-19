@@ -7,7 +7,7 @@ class Admin::StoresController < ApplicationController
   def create
     store = Store.new(store_params)
     store.save
-    redirect_to "/top"
+    redirect_to "/admin"
   end
 
   def index
@@ -26,6 +26,12 @@ class Admin::StoresController < ApplicationController
     store = Store.find(params[:id])
     store.update(store_params)
     redirect_to admin_store_path(store.id)
+  end
+
+  def destroy
+    store = Store.find(params[:id])
+    store.destroy
+    redirect_to admin_root_path
   end
 
   private

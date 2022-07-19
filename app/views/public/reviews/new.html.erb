@@ -1,15 +1,14 @@
 <h3>新規レビュー</h3>
 
 <%= form_with model: @review, url: reviews_path do |f| %>
-  <p>タイトル</p>
-  <%= f.text_field :title %>
+  <%= f.label :title, "タイトル" %>
+  <%= f.text_field :title %><br>
 
-  <p>レビュー内容</p>
-  <%= f.text_area :body %>
+  <%= f.label :body, "レビュー内容" %>
+  <%= f.text_area :body %><br>
 
-  <p>レビュー画像</p>
-  <%= f.file_field :image, accept: "image/*" %>
-  <%= f.submit "投稿" %>
+  <%= f.label :image, "レビュー画像" %>
+  <%= f.file_field :image, accept: "image/*" %><br>
 
   <!-- 星レビュー機能 -->
   <div class="form-group row" id="star">
@@ -26,4 +25,5 @@
       half: false
     });
   </script>
+  <%= f.submit "投稿" %>
 <% end %>

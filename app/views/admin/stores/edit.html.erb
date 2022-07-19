@@ -5,13 +5,13 @@
 
   <p>住所</p>
   <%= f.text_field :address %>
-  
+
   <p>店舗画像</p>
   <%= f.file_field :image, accept: "image/*" %>
 
   <p>店舗名</p>
   <%= f.text_field :name %>
-  
+
   <p>ジャンル</p>
   <%= f.collection_select :genre_name, Genre.all, :name, :name %>
 

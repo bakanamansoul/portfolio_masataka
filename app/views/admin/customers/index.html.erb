@@ -2,17 +2,20 @@
 <table>
   <thead>
     <tr>
-      <th>画像</th>
       <th>名前</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbady>
-    <% @customers do |customer| %>
+    <% @customers.each do |customer| %>
     <tr>
-      <td><%= image_tag user.get_profile_image %></td>
       <td><%= customer.name %></td>
-      <td><%= link_to "詳細",customer_path(customer.id) %></td>
+      <% if customer.is_deleted == false %>
+      <td class="text-success">有効</td>
+      <% else %>
+      <td class="text-secondary">退会</td>
+      <% end %>
+      <td><%= link_to "詳細",admin_customer_path(customer.id) %></td>
     </tr>
     <% end %>
   </tbady>

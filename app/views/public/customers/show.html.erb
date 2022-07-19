@@ -1,13 +1,6 @@
 <h3>マイページ</h3>
 <table>
   <tr>
-    <th>
-      <% if @cusotmer.image.attached? %>
-        <%= image_tag @customer.image, size: "200x200" %>
-      <% else %>
-        <%= image_tag "no_image", size: "200x200" %>
-      <% end %>
-    </th>
     <td><%= @customer.name %></td>
   </tr>
 </table>

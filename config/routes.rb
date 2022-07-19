@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get "about" => "homes#about", as: 'about'
-    resources :customers, only: [:show, :edit, :update, :destroy]
+    resources :customers, only: [:index, :show, :edit, :out, :update, :destroyupdate]
     resources :stores, only: [:index, :show]
     resources :genres, only: [:index]
     resources :reviews, only: [:new, :create, :index, :show, :edit, :update]
@@ -19,9 +19,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "stores#index"
-    resources :stores, only: [:new, :create, :show, :edit, :update]
-    resources :customers, only: [:index, :show, :destroy]
-    resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :stores, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :customers, only: [:index, :show, :update]
+    resources :genres, only: [:index, :create, :show, :destroy]
     resources :reviews, only: [:show, :destroy]
   end
 

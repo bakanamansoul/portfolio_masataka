@@ -5,8 +5,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.new
-    review.save
+    @review = Review.new(review_params)
+    @review.save
     redirect_to reviews_path
   end
 
@@ -27,10 +27,10 @@ class Public::ReviewsController < ApplicationController
     review.update(review_params)
     redirect_to review_path(review.id)
   end
-  
+
   private
-  
+
   def review_params
-    params.require(:review).permit(:title, :body, :s)
+    params.require(:review).permit(:title, :body, :star)
   end
 end
