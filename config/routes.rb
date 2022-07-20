@@ -6,11 +6,18 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
+    get "search" => "searches#search"
     get "about" => "homes#about", as: 'about'
-    resources :customers, only: [:index, :show, :edit, :out, :update, :destroyupdate]
-    resources :stores, only: [:index, :show]
+    resources :customers, only: [:index, :show, :edit, :update] do
+      collection do
+        get "out" => "customers#out"
+        patch "destroyupdate" => "customers#destroyupdate"
+      end
+    end
+    resources :stores, only: [:index, :show] do
+      resources :reviews, only: [:new, :create, :index, :show, :edit, :update]
+    end
     resources :genres, only: [:index]
-    resources :reviews, only: [:new, :create, :index, :show, :edit, :update]
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -19,6 +26,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "stores#index"
+    get "search" => "searches#search"
     resources :stores, only: [:new, :create, :show, :edit, :update, :destroy]
     resources :customers, only: [:index, :show, :update]
     resources :genres, only: [:index, :create, :show, :destroy]

@@ -1,4 +1,7 @@
 class Admin::ReviewsController < ApplicationController
+  def index
+    @reviews = Review.all
+  end
 
   def show
     @review = Review.find(params[:id])
@@ -9,9 +12,9 @@ class Admin::ReviewsController < ApplicationController
     review.destroy
     redirect_to admin_review_path
   end
-  
+
   private
-  
+
   def review_params
     params.require(:review).permit(:title, :body, :star)
   end

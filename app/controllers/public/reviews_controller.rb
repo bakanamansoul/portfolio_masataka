@@ -6,12 +6,13 @@ class Public::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.customer_id = current_customer.id
     @review.save
-    redirect_to reviews_path
+    redirect_to store_reviews_path
   end
 
   def index
-    @reviews = Review.all
+    @reviews = Review.where
   end
 
   def show
@@ -31,6 +32,6 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :body, :star)
+    params.require(:review).permit(:store_id, :title, :body, :star, :image)
   end
 end

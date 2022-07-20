@@ -1,0 +1,24 @@
+<h2>検索一覧</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがCustomerの時 -->
+  <% if @range == "Customer" %>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがCustomerではない時(= 検索対象モデルがStoreの時) -->
+    <tbody>
+      <% @stores.each do |store| %>
+        <tr>
+          <td><%= store.name %></td>
+          <td><%= store.genre_id %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

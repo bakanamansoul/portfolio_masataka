@@ -1,10 +1,10 @@
 <h3>会員詳細</h3>
 <table>
-  <%= form_with model: @customer, url: admin_customers_path,local:true do |f| %>
   <tr>
     <td><%= @customer.name %></td>
     <td>
-    <%= f.label :is_deleted, "会員ステータス", class: "col-md-2 mt-2" %>
+    <%= form_with model: @customer, url: admin_customer_path,local:true, method: :patch do |f| %>
+      <%= f.label :is_deleted, "会員ステータス", class: "col-md-2 mt-2" %>
       <div class="form-check form-check-inline">
         <%= f.radio_button :is_deleted, false %>
         <%= f.label :is_deleted,"有効", value: false %>
