@@ -2,21 +2,30 @@
 
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがCustomerの時 -->
-  <% if @range == "Customer" %>
+  <% if @model == "Customer" %>
     <tbody>
-      <% @customers.each do |customer| %>
+      <% @records.each do |customer| %>
         <tr>
           <td><%= customer.name %></td>
         </tr>
       <% end %>
     </tbody>
-  <% else %>
-    <!--検索対象モデルがCustomerではない時(= 検索対象モデルがStoreの時) -->
+  <!--検索対象モデルがCustomerではない時(= 検索対象モデルがStoreの時) -->
+  <% elsif @model == "store" %>
     <tbody>
-      <% @stores.each do |store| %>
+      <% @records.each do |store| %>
         <tr>
-          <td><%= store.name %></td>
-          <td><%= store.genre_id %></td>
+          <td>
+            <% if store.image.attached? %>
+              <%= image_tag store.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag "no_image", size: "100x100" %>
+            <% end %>
+          </td>
+          <td><%= link_to store.name, store_path(store.id) %></td>
+          <td><%= store.genre_name %></td>
+          <td><%= store.postcode %></td>
+          <td><%= store.address %></td>
         </tr>
       <% end %>
     </tbody>

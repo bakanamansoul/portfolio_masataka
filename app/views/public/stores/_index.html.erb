@@ -1,5 +1,4 @@
-<h3>レビュー一覧</h3>
-<p><%= link_to "新規投稿はこちら", new_store_review_path %></p>
+<h5>レビュー一覧</h5>
 <table>
   <thead>
     <tr>
@@ -9,12 +8,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @reviews.each do |review| %>
+    <% store.reviews.each do |review| %>
     <tr>
       <td><%= review.customer.name %></td>
       <td><%= review.store.name %></td>
-      <td><%= review.title %></td>
-      <td><%= image_tag review.get_image, size: "100x100" %></td>
+      <td><%= link_to review.title, store_review_path(review.id) %></td>
+      <td><%= image_tag review.image, size: "100x100" %></td>
       <td>
         <div id="star-rate<%= review.id%>"></td>
          <script>
@@ -28,6 +27,9 @@
              score: <%= review.star %>,
            });
          </script>
+      </td>
+      <td>
+
       </td>
     </tr>
     <% end %>

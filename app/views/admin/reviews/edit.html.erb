@@ -1,11 +1,17 @@
 <h3>レビュー詳細</h3>
-<%= link_to "店舗詳細へ戻る", store_path(@review.store.id) %>
+
 <table>
   <tr>
-    <td><%= @review.title %></td>
+    <td>
+      <strong>タイトル</strong><br>
+      <%= @review.title %>
+    </td>
   </tr>
   <tr>
-    <td><%= @review.body %></td>
+    <td>
+      <strong>レビュー内容</strong><br>
+      <%= @review.body %>
+    </td>
   </tr>
   <tr>
     <td><%= image_tag @review.image, size: "100x100" %></td>
@@ -16,7 +22,7 @@
     <div id="star-rate<%= @review.id%>"></td>
       <script>
         $('#star-rate<%= @review.id %>').empty();
-        $('#star-rate<%= @review.id%>').raty({
+        $('#star-rate<%= @review.id %>').raty({
           size      : 36,
           starOff   : '<%= asset_path('star-off.png') %>',
           starOn    : '<%= asset_path('star-on.png') %>',
@@ -29,5 +35,4 @@
     <!--ここまで星レビュー機能の追加-->
   </tr>
 </table>
-<%= link_to "編集する", edit_store_review_path %>
-<%= link_to "削除する", store_path(@review.store.id), method: :delete %>
+<%= link_to "削除する", admin_review_path(@review.id), method: :delete %>

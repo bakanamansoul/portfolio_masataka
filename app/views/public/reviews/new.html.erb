@@ -1,6 +1,6 @@
 <h3>新規レビュー</h3>
 
-<%= form_with model: @review, url: store_reviews_path do |f| %>
+<%= form_with model: @review, url: store_path(@review.store.id) do |f| %>
   <%= f.label :title, "タイトル" %>
   <%= f.text_field :title %><br>
 

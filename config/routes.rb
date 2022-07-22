@@ -14,8 +14,8 @@ Rails.application.routes.draw do
         patch "destroyupdate" => "customers#destroyupdate"
       end
     end
-    resources :stores, only: [:index, :show] do
-      resources :reviews, only: [:new, :create, :index, :show, :edit, :update]
+    resources :stores, only: [:index, :show, :destroy] do
+      resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy]
     end
     resources :genres, only: [:index]
   end
@@ -28,9 +28,9 @@ Rails.application.routes.draw do
     root to: "stores#index"
     get "search" => "searches#search"
     resources :stores, only: [:new, :create, :show, :edit, :update, :destroy]
-    resources :customers, only: [:index, :show, :update]
+    resources :customers, only: [:index, :edit, :update]
     resources :genres, only: [:index, :create, :show, :destroy]
-    resources :reviews, only: [:show, :destroy]
+    resources :reviews, only: [:index, :edit, :destroy]
   end
 
   root to: "public/homes#top"

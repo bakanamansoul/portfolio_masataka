@@ -15,7 +15,7 @@
       <% else %>
       <td class="text-secondary">退会</td>
       <% end %>
-      <td><%= link_to "詳細",admin_customer_path(customer.id) %></td>
+      <td><%= link_to "管理はこちら",edit_admin_customer_path(customer.id) %></td>
     </tr>
     <% end %>
   </tbady>

@@ -13,7 +13,7 @@
       <td><%= review.customer.name %></td>
       <td><%= review.store.name %></td>
       <td><%= review.title %></td>
-      <td><%= image_tag review.get_image, size: "100x100" %></td>
+      <td><%= image_tag review.image, size: "100x100" %></td>
       <td>
         <div id="star-rate<%= review.id%>"></td>
          <script>
@@ -28,6 +28,7 @@
            });
          </script>
       </td>
+      <td><%= link_to "詳細", editadmin_review_path(review.id) %></td>
     </tr>
     <% end %>
   </tbody>
