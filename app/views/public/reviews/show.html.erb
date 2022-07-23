@@ -30,4 +30,4 @@
   </tr>
 </table>
 <%= link_to "編集する", edit_store_review_path %>
-<%= link_to "削除する", store_path(@review.store.id), method: :delete %>
+<%= link_to "削除する", store_review_path(@review.store_id, @review.id), method: :delete %>

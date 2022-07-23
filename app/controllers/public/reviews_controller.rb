@@ -10,14 +10,10 @@ class Public::ReviewsController < ApplicationController
     @review.customer_id = current_customer.id
     @review.store_id = params[:store_id]
     if @review.save!
-      redirect_to store_path(store.id)
+      redirect_to store_path(@review.store.id)
     else
       render :new
-    e
-  end
-
-  def index
-    @reviews = Review.where(store_id: params[:store_id])
+    end
   end
 
   def show
@@ -29,15 +25,15 @@ class Public::ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(params[:id])
-    review.update(review_params)
-    redirect_to store_review_path(review.id)
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    redirect_to store_review_path(@review.store_id, @review.id)
   end
 
   def destroy
-    review = Review.find(params[:id])
-    review.destroy
-    redirect_to store_path(store.id)
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to store_path(@review.store_id)
   end
 
   private

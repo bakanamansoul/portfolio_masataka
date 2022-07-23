@@ -12,7 +12,7 @@
     <tr>
       <td><%= review.customer.name %></td>
       <td><%= review.store.name %></td>
-      <td><%= link_to review.title, store_review_path(review.id) %></td>
+      <td><%= link_to review.title, store_review_path(store.id, review.id) %></td>
       <td><%= image_tag review.image, size: "100x100" %></td>
       <td>
         <div id="star-rate<%= review.id%>"></td>
