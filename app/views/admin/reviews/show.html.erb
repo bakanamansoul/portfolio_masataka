@@ -1,38 +1,46 @@
-<h3>レビュー詳細</h3>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
 
-<table>
-  <tr>
-    <td>
-      <strong>タイトル</strong><br>
-      <%= @review.title %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>レビュー内容</strong><br>
-      <%= @review.body %>
-    </td>
-  </tr>
-  <tr>
-    <td><%= image_tag @review.image, size: "100x100" %></td>
-  </tr>
-  <tr>
-    <!--ここから星レビュー機能の追加-->
-    <td>
-    <div id="star-rate<%= @review.id%>"></td>
-      <script>
-        $('#star-rate<%= @review.id %>').empty();
-        $('#star-rate<%= @review.id %>').raty({
-          size      : 36,
-          starOff   : '<%= asset_path('star-off.png') %>',
-          starOn    : '<%= asset_path('star-on.png') %>',
-          half      : false,
-          readOnly: true,
-          score: <%= @review.star %>,
-        });
-      </script>
-    </td>
-    <!--ここまで星レビュー機能の追加-->
-  </tr>
-</table>
-<%= link_to "削除する", admin_review_path(@review.id), method: :delete %>
+    <h3>レビュー詳細</h3>
+
+    <table class="table">
+      <tr>
+        <td>
+          <strong>タイトル</strong><br>
+          <%= @review.title %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>レビュー内容</strong><br>
+          <%= @review.body %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= image_tag @review.image, size: "100x100" %></td>
+      </tr>
+      <tr>
+        <!--ここから星レビュー機能の追加-->
+        <td>
+        <div id="star-rate<%= @review.id%>"></td>
+          <script>
+            $('#star-rate<%= @review.id %>').empty();
+            $('#star-rate<%= @review.id %>').raty({
+              size      : 36,
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= @review.star %>,
+            });
+          </script>
+        </td>
+        <!--ここまで星レビュー機能の追加-->
+      </tr>
+    </table>
+    <%= link_to "削除する", admin_review_path(@review.id), method: :delete %>
+
+    </div>
+  </div>
+</div>

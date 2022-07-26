@@ -1,7 +1,15 @@
-<h3>マイページ</h3>
-<table>
-  <tr>
-    <td><%= @customer.name %></td>
-  </tr>
-</table>
-<p><%= link_to "編集する", edit_customer_path(@customer.id) %></p>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
+
+    <h3>マイページ</h3>
+    <table class="table">
+      <tr>
+        <td><%= @customer.name %></td>
+      </tr>
+    </table>
+    <p><%= link_to "編集する", edit_customer_path(@customer.id) %></p>
+
+    </div>
+  </div>
+</div>

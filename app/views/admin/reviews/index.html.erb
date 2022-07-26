@@ -1,35 +1,43 @@
-<h3>レビュー一覧</h3>
-<table>
-  <thead>
-    <tr>
-      <th>レビュー</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @reviews.each do |review| %>
-    <tr>
-      <td><%= review.customer.name %></td>
-      <td><%= review.store.name %></td>
-      <td><%= review.title %></td>
-      <td><%= image_tag review.image, size: "100x100" %></td>
-      <td>
-        <div id="star-rate<%= review.id%>"></td>
-         <script>
-          $('#star-rate<%= review.id %>').empty();
-          $('#star-rate<%= review.id%>').raty({
-             size      : 36,
-             starOff   : '<%= asset_path('star-off.png') %>',
-             starOn    : '<%= asset_path('star-on.png') %>',
-             half      : false,
-             readOnly: true,
-             score: <%= review.star %>,
-           });
-         </script>
-      </td>
-      <td><%= link_to "詳細", admin_review_path(review.id) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
+
+    <h3>レビュー一覧</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>レビュー</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.customer.name %></td>
+          <td><%= review.store.name %></td>
+          <td><%= review.title %></td>
+          <td><%= image_tag review.image, size: "100x100" %></td>
+          <td>
+            <div id="star-rate<%= review.id%>"></td>
+             <script>
+              $('#star-rate<%= review.id %>').empty();
+              $('#star-rate<%= review.id%>').raty({
+                 size      : 36,
+                 starOff   : '<%= asset_path('star-off.png') %>',
+                 starOn    : '<%= asset_path('star-on.png') %>',
+                 half      : false,
+                 readOnly: true,
+                 score: <%= review.star %>,
+               });
+             </script>
+          </td>
+          <td><%= link_to "詳細", admin_review_path(review.id) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    </div>
+  </div>
+</div>

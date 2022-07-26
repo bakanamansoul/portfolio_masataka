@@ -1,29 +1,37 @@
-<h3>新規レビュー</h3>
-
-<%= form_with model: @review, url: store_reviews_path do |f| %>
-  <%= f.label :title, "タイトル" %>
-  <%= f.text_field :title %><br>
-
-  <%= f.label :body, "レビュー内容" %>
-  <%= f.text_area :body %><br>
-
-  <%= f.label :image, "レビュー画像" %>
-  <%= f.file_field :image, accept: "image/*" %><br>
-
-  <!-- 星レビュー機能 -->
-  <div class="form-group row" id="star">
-    <%= f.label :star,'評価', class:'col-md-3 col-form-label' %>
-    <%= f.hidden_field :star, id: :review_star %>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
+      
+    <h3>新規レビュー</h3>
+    
+    <%= form_with model: @review, url: store_reviews_path do |f| %>
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title %><br>
+    
+      <%= f.label :body, "レビュー内容" %>
+      <%= f.text_area :body %><br>
+    
+      <%= f.label :image, "レビュー画像" %>
+      <%= f.file_field :image, accept: "image/*" %><br>
+    
+      <!-- 星レビュー機能 -->
+      <div class="form-group row" id="star">
+        <%= f.label :star,'評価', class:'col-md-3 col-form-label' %>
+        <%= f.hidden_field :star, id: :review_star %>
+      </div>
+      <script>
+              $('#star').empty();
+        $('#star').raty({
+          size :36,
+          starOff: '<%= asset_path('star-off.png') %>',
+          starOn: '<%= asset_path('star-on.png') %>',
+              scoreName: 'review[star]',
+          half: false
+        });
+      </script>
+      <%= f.submit "投稿" %>
+    <% end %>
+    
+    </div>
   </div>
-  <script>
-          $('#star').empty();
-    $('#star').raty({
-      size :36,
-      starOff: '<%= asset_path('star-off.png') %>',
-      starOn: '<%= asset_path('star-on.png') %>',
-          scoreName: 'review[star]',
-      half: false
-    });
-  </script>
-  <%= f.submit "投稿" %>
-<% end %>
+</div>

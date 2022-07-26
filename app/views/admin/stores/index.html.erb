@@ -1,22 +1,30 @@
-<h2>店舗一覧</h2>
-  <p><%= link_to "店舗追加", new_admin_store_path %></p>
-<table>
-  <tbody>
-    <% @stores.each do |store| %>
-    <tr>
-      <td>
-        <% if store.image.attached? %>
-          <%= image_tag store.image, size: "100x100" %>
-        <% else %>
-          <%= image_tag "no_image", size: "100x100" %>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
+
+    <h2>店舗一覧</h2>
+      <p><%= link_to "店舗追加", new_admin_store_path %></p>
+    <table class="table">
+      <tbody>
+        <% @stores.each do |store| %>
+        <tr>
+          <td>
+            <% if store.image.attached? %>
+              <%= image_tag store.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag "no_image", size: "100x100" %>
+            <% end %>
+          </td>
+          <td><%= link_to store.name, admin_store_path(store.id) %></td>
+          <td><%= store.genre_name %></td>
+          <td><%= store.postcode %></td>
+          <td><%= store.address %></td>
+        </tr>
         <% end %>
-      </td>
-      <td><%= link_to store.name, admin_store_path(store.id) %></td>
-      <td><%= store.genre_name %></td>
-      <td><%= store.postcode %></td>
-      <td><%= store.address %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to "ジャンル追加はこちら", admin_genres_path %>
+      </tbody>
+    </table>
+    <%= link_to "ジャンル追加はこちら", admin_genres_path %>
+
+    </div>
+  </div>
+</div>

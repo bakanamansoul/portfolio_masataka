@@ -1,39 +1,48 @@
-<h3>店舗詳細</h3>
-<p><%= link_to "新規投稿はこちら", new_store_review_path(@store) %></p>
-<table>
-  <tr>
-    <th><% @store.name %></th>
-    <td>
-      <% if @store.image.attached? %>
-        <%= image_tag @store.image, size: "200x200" %>
-      <% else %>
-        <%= image_tag "no_image", size: "200x200" %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th>ジャンル</th>
-    <td><%= @store.genre_name %></td>
-  </tr>
-  <tr>
-    <th>メニュー</th>
-    <td><%= @store.menu %></td>
-  </tr>
-  <tr>
-    <th>営業時間</th>
-    <td><%= @store.business_hours %></td>
-  </tr>
-  <tr>
-    <th>定休日</th>
-    <td><%= @store.fixed_holiday %></td>
-  </tr>
-  <tr>
-    <th>住所</th>
-    <td><%= @store.postcode %><% @store.address %></td>
-  </tr>
-  <tr>
-    <th>アクセス</th>
-    <td><%= @store.access%></td>
-  </tr>
-</table>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
+
+    <h3>店舗詳細</h3>
+    <p><%= link_to "新規投稿はこちら", new_store_review_path(@store) %></p>
+    <table class="table">
+      <tr>
+        <th><% @store.name %></th>
+        <td>
+          <% if @store.image.attached? %>
+            <%= image_tag @store.image, size: "200x200" %>
+          <% else %>
+            <%= image_tag "no_image", size: "200x200" %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>ジャンル</th>
+        <td><%= @store.genre_name %></td>
+      </tr>
+      <tr>
+        <th>メニュー</th>
+        <td><%= @store.menu %></td>
+      </tr>
+      <tr>
+        <th>営業時間</th>
+        <td><%= @store.business_hours %></td>
+      </tr>
+      <tr>
+        <th>定休日</th>
+        <td><%= @store.fixed_holiday %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @store.postcode %><% @store.address %></td>
+      </tr>
+      <tr>
+        <th>アクセス</th>
+        <td><%= @store.access%></td>
+      </tr>
+    </table>
+
+    </div>
+  </div>
+</div>
+
 <%= render 'index', store: @store %>

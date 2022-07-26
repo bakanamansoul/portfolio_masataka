@@ -1,16 +1,24 @@
-<h3>ジャンル詳細</h3>
-<table>
-  <thead>
-    <tr>
-      <th>ジャンル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <%= @genre.name %>
-        <%= link_to "削除する", admin_genre_path(@genre.id), method: :delete %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
+      
+    <h3>ジャンル詳細</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ジャンル</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= @genre.name %>
+            <%= link_to "削除する", admin_genre_path(@genre.id), method: :delete %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>
+  </div>
+</div>

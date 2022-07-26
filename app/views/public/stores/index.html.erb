@@ -1,19 +1,27 @@
-<h3>店舗一覧</h3>
-<table>
-  <tbody>
-    <% @stores.each do |store| %>
-    <tr>
-      <th><%= link_to store.name, store_path(store.id) %><br>
-        <% if store.image.attached? %>
-          <%= image_tag store.image, size: "100x100" %>
-        <% else %>
-          <%= image_tag "no_image", size: "100x100" %>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
+
+    <h3>店舗一覧</h3>
+    <table class="table">
+      <tbody>
+        <% @stores.each do |store| %>
+        <tr>
+          <th><%= link_to store.name, store_path(store.id) %><br>
+            <% if store.image.attached? %>
+              <%= image_tag store.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag "no_image", size: "100x100" %>
+            <% end %>
+          </th>
+          <td><%= store.genre_name %></td>
+          <td><%= store.postcode %></td>
+          <td><%= store.address %></td>
+        </tr>
         <% end %>
-      </th>
-      <td><%= store.genre_name %></td>
-      <td><%= store.postcode %></td>
-      <td><%= store.address %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+
+    </div>
+  </div>
+</div>

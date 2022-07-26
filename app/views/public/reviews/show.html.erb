@@ -1,33 +1,47 @@
-<h3>レビュー詳細</h3>
-<%= link_to "店舗詳細へ戻る", store_path(@review.store.id) %>
-<table>
-  <tr>
-    <td><%= @review.title %></td>
-  </tr>
-  <tr>
-    <td><%= @review.body %></td>
-  </tr>
-  <tr>
-    <td><%= image_tag @review.image, size: "100x100" %></td>
-  </tr>
-  <tr>
-    <!--ここから星レビュー機能の追加-->
-    <td>
-    <div id="star-rate<%= @review.id%>"></td>
-      <script>
-        $('#star-rate<%= @review.id %>').empty();
-        $('#star-rate<%= @review.id%>').raty({
-          size      : 36,
-          starOff   : '<%= asset_path('star-off.png') %>',
-          starOn    : '<%= asset_path('star-on.png') %>',
-          half      : false,
-          readOnly: true,
-          score: <%= @review.star %>,
-        });
-      </script>
-    </td>
-    <!--ここまで星レビュー機能の追加-->
-  </tr>
-</table>
-<%= link_to "編集する", edit_store_review_path %>
-<%= link_to "削除する", store_review_path(@review.store_id, @review.id), method: :delete %>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
+
+    <h3>レビュー詳細</h3>
+    <%= link_to "店舗詳細へ戻る", store_path(@review.store.id) %>
+    <table class="table">
+      <tr>
+        <td><%= @review.title %></td>
+      </tr>
+      <tr>
+        <td><%= @review.body %></td>
+      </tr>
+      <tr>
+        <td>
+          <% if @review.image.attached? %>
+            <%= image_tag @review.image, size: "100x100" %>
+          <% else %>
+            <%= image_tag "no_image", size: "100x100" %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <!--ここから星レビュー機能の追加-->
+        <td>
+        <div id="star-rate<%= @review.id%>"></td>
+          <script>
+            $('#star-rate<%= @review.id %>').empty();
+            $('#star-rate<%= @review.id%>').raty({
+              size      : 36,
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= @review.star %>,
+            });
+          </script>
+        </td>
+        <!--ここまで星レビュー機能の追加-->
+      </tr>
+    </table>
+    <%= link_to "編集する", edit_store_review_path %>
+    <%= link_to "削除する", store_review_path(@review.store_id, @review.id), method: :delete %>
+
+    </div>
+  </div>
+</div>

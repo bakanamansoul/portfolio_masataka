@@ -1,51 +1,47 @@
-<h2>店舗詳細</h2>
-<table>
-  <tr>
-    <td>
-      <strong>イメージ画像</strong><br>
-      <% if @store.image.attached? %>
-        <%= image_tag @store.image, size: "200x200" %>
-      <% else %>
-        <%= image_tag "no_image", size: "200x200" %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>ジャンル</strong><br>
-      <%= @store.genre_name %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>メニュー</strong><br>
-      <%= @store.menu %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>営業時間</strong><br>
-      <%= @store.business_hours %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>定休日</strong><br>
-      <%= @store.fixed_holiday %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>住所</strong><br>
-      <%= @store.postcode %><% @store.address %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>アクセス</strong><br>
-      <%= @store.access%>
-    </td>
-  </tr>
-</table>
-<%= link_to "編集する", edit_admin_store_path(@store.id) %>
-<%= link_to "削除する", admin_store_path(@store.id), method: :delete %>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
+
+    <h2>店舗詳細</h2>
+    <table class="table">
+      <tr>
+        <th><%= @store.name %></th>
+        <td>
+          <% if @store.image.attached? %>
+            <%= image_tag @store.image, size: "200x200" %>
+          <% else %>
+            <%= image_tag "no_image", size: "200x200" %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>ジャンル</th>
+        <td><%= @store.genre_name %></td>
+      </tr>
+      <tr>
+        <th>メニュー</th>
+        <td><%= @store.menu %></td>
+      </tr>
+      <tr>
+        <th>営業時間</th>
+        <td><%= @store.business_hours %></td>
+      </tr>
+      <tr>
+        <th>定休日</th>
+        <td><%= @store.fixed_holiday %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @store.postcode %><% @store.address %></td>
+      </tr>
+      <tr>
+        <th>アクセス</th>
+        <td><%= @store.access%></td>
+      </tr>
+    </table>
+    <%= link_to "編集する", edit_admin_store_path(@store.id) %>
+    <%= link_to "削除する", admin_store_path(@store.id), method: :delete %>
+
+    </div>
+  </div>
+</div>

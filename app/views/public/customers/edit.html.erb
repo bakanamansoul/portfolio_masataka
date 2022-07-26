@@ -1,7 +1,15 @@
-<h3>編集画面</h3>
-<%= form_with model: @customer, url: customer_path do |f| %>
-  <p>名前</p>
-  <%= f.text_field :name %>
-  <%= f.submit "編集を保存" %>
-  <%= link_to "退会する", out_customers_path, class: "btn btn-sm btn-danger mt-4 ml-5" %>
-<% end %>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
+      
+    <h3>編集画面</h3>
+    <%= form_with model: @customer, url: customer_path do |f| %>
+      <p>名前</p>
+      <%= f.text_field :name %>
+      <%= f.submit "編集を保存" %>
+      <%= link_to "退会する", out_customers_path, class: "btn btn-sm btn-danger mt-4 ml-5" %>
+    <% end %>
+      
+    </div>
+  </div>
+</div>

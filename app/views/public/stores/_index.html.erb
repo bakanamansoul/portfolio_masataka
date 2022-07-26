@@ -1,37 +1,48 @@
-<h5>レビュー一覧</h5>
-<table>
-  <thead>
-    <tr>
-      <th>レビュー</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% store.reviews.each do |review| %>
-    <tr>
-      <td><%= review.customer.name %></td>
-      <td><%= review.store.name %></td>
-      <td><%= link_to review.title, store_review_path(store.id, review.id) %></td>
-      <td><%= image_tag review.image, size: "100x100" %></td>
-      <td>
-        <div id="star-rate<%= review.id%>"></td>
-         <script>
-          $('#star-rate<%= review.id %>').empty();
-          $('#star-rate<%= review.id%>').raty({
-             size      : 36,
-             starOff   : '<%= asset_path('star-off.png') %>',
-             starOn    : '<%= asset_path('star-on.png') %>',
-             half      : false,
-             readOnly: true,
-             score: <%= review.star %>,
-           });
-         </script>
-      </td>
-      <td>
+<div class="cotainer">
+  <div class="row">
+    <div class="col-8 offset-1">
 
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    <h5><strong>レビュー一覧</strong></h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>レビュー</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% store.reviews.each do |review| %>
+        <tr>
+          <td><%= review.customer.name %></td>
+          <td><%= review.store.name %></td>
+          <td><%= link_to review.title, store_review_path(store.id, review.id) %></td>
+          <td>
+            <% if review.image.attached? %>
+              <%= image_tag review.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag "no_image", size: "100x100" %>
+            <% end %>
+          </td>
+          <td>
+            <div id="star-rate<%= review.id%>"></td>
+             <script>
+              $('#star-rate<%= review.id %>').empty();
+              $('#star-rate<%= review.id%>').raty({
+                 size      : 36,
+                 starOff   : '<%= asset_path('star-off.png') %>',
+                 starOn    : '<%= asset_path('star-on.png') %>',
+                 half      : false,
+                 readOnly: true,
+                 score: <%= review.star %>,
+               });
+             </script>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    </div>
+  </div>
+</div>
