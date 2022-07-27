@@ -5,6 +5,7 @@
     <h3>新規レビュー</h3>
     
     <%= form_with model: @review, url: store_reviews_path do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
       <%= f.label :title, "タイトル" %>
       <%= f.text_field :title %><br>
     
